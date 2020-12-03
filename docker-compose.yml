@@ -1,13 +1,41 @@
 version: "3.8"
 services:
-  web:
-    container_name: web-php
+  web1:
+    container_name: web1
     restart: always  
     build:
       context: ./
       dockerfile: php.dockerfile
     volumes:  
       - ./API/:/var/www/
+    ports: 
+      - "9001:9000"
+    depends_on:
+      - db
+
+  web2:
+    container_name: web2
+    restart: always  
+    build:
+      context: ./
+      dockerfile: php.dockerfile
+    volumes:  
+      - ./API/:/var/www/
+    ports: 
+      - "9002:9000"
+    depends_on:
+      - db
+
+  web3:
+    container_name: web3
+    restart: always  
+    build:
+      context: ./
+      dockerfile: php.dockerfile
+    volumes:  
+      - ./API/:/var/www/
+    ports: 
+      - "9003:9000"
     depends_on:
       - db
   db:
@@ -30,4 +58,6 @@ services:
     volumes:
       - ./API/:/var/www/
     depends_on:
-      - web
+      - web1
+      - web2
+      - web3
