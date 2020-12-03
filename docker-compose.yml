@@ -8,8 +8,6 @@ services:
       dockerfile: php.dockerfile
     volumes:  
       - ./API/:/var/www/
-    ports: 
-      - "9001:9000"
     depends_on:
       - db
 
@@ -21,8 +19,6 @@ services:
       dockerfile: php.dockerfile
     volumes:  
       - ./API/:/var/www/
-    ports: 
-      - "9002:9000"
     depends_on:
       - db
 
@@ -34,8 +30,17 @@ services:
       dockerfile: php.dockerfile
     volumes:  
       - ./API/:/var/www/
-    ports: 
-      - "9003:9000"
+    depends_on:
+      - db
+
+  web4:
+    container_name: web4
+    restart: always  
+    build:
+      context: ./
+      dockerfile: php.dockerfile
+    volumes:  
+      - ./API/:/var/www/
     depends_on:
       - db
   db:
