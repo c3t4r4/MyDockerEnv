@@ -4,6 +4,9 @@
  - PostgreSQL 1.19-alpine
  - Nginx 1.19-alpine
 
+# Information
+ - Run Nginx Load Balancer on 4 PHP Containers
+
 ### Containers
 
 - **[PHP](https://hub.docker.com/_/php)**
